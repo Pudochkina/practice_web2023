@@ -43,11 +43,9 @@ public class ApplicationController {
         return "table";
     }
 
-    @PatchMapping("/form/{id}")
-    public String updateStatus(Model model, @PathVariable("id") Long id) {
-        model.addAttribute("table", applicationFormService.getAllApplicationForms());
-        model.addAttribute("applicationForm", new ApplicationForm());
-        model.addAttribute("id", id);
-        return "redirect:";
+    @PostMapping("/form/{id}")
+    public String updateStatus(String status, @PathVariable("id") Long id) {
+        applicationFormService.updateApplicationForm(id, status);
+        return "redirect:/table";
     }
 }

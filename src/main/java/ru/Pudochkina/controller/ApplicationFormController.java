@@ -26,9 +26,9 @@ public class ApplicationFormController {
         applicationFormService.createApplicationForm(applicationForm);
     }
 
-    @PatchMapping("/{id}")
-    public void updateApplicationForm(@PathVariable("id") Long id, @RequestBody  String status){
-        applicationFormService.updateApplicationForm(id, status);
+    @PostMapping("/{id}")
+    public void updateApplicationForm(@PathVariable("id") Long id, @RequestBody ApplicationForm applicationForm){
+        applicationFormService.updateApplicationForm(id, applicationForm.getStatus());
     }
 
 }

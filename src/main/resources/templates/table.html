@@ -137,12 +137,10 @@ td:first-child {
 			<td></td>
 			<td th:text="${applicationForm.status}"></td>
 			<td>
+				<form th:action="@{/form/{id}(id=${applicationForm.id})}" method="post">
 				<input type="text" placeholder="..." minlength="2"
-					   maxlength="15" required="required">
-					   <!--th:action="@{/form/{id}(id=${applicationForm.id})}"
-					   th:object="${applicationForm}"
-					   th:field="*{status}"-->
-
+					   maxlength="30" required="required" name="status">
+			</form>
 			</td>
 		</tr>
 		<script>
