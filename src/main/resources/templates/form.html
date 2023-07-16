@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta charset="utf-8">
+	<title>Форма обратной связи</title>
+	<link rel="stylesheet" type="text/css">
+	<style type="text/css">
+		*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.d-none {
+  display: none !important;
+}
+
+html {
+  font-family: sans-serif;
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  text-align: left;
+  background-color: #fff;
+}
+
+label {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+button {
+  border-radius: 0;
+}
+
+textarea {
+  overflow: auto;
+  resize: vertical;
+}
+
+.container {
+  padding-right: 415px;
+  padding-left: 415px;
+  padding-top: 20px;
+  padding-bottom: 98px;
+  background-color: rgba(115, 151, 189, 0.7);
+
+}
+
+h1 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.form__wrapper {
+  position: relative;
+  padding: 1rem;
+  border: 1px solid rgba(0, 0, 0, .125);
+  border-radius: 4px;
+  margin-bottom: 2rem;
+}
+
+.form-row {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -5px;
+  margin-left: -5px;
+}
+
+@media (min-width: 376px) {
+  .form-row>.form-group {
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  height: calc(1.5em + .75rem + 2px);
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.form-control:focus {
+  color: #495057;
+  background-color: #fff;
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, .25);
+}
+
+label {
+  display: inline-block;
+  margin-bottom: .5rem;
+}
+
+textarea.form-control {
+  overflow: auto;
+  resize: vertical;
+  height: auto;
+}
+
+/* Стили для секции, с помощью которой можно добавить к форме файлы */
+.form-attach__label {
+  margin-bottom: 11px;
+}
+
+/* CSS для кнопки submit */
+button[type="submit"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 400;
+  color: #000000;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-color: #c90c28;
+  border: 1px solid #c90c28;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: .25rem;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  position: relative;
+}
+
+* {
+.header {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	padding-bottom: 20px;
+	padding-top: 20px;
+
+	background-color: rgba(217, 178, 152, 0.7);
+}
+.logo img {
+	width: 150px;
+}
+.name {
+	font-size: 25pt;
+	text-align: center;
+}
+	</style>
+</head>
+
+<body>
+<div class="header">
+	<div class="logo"><img src="/images/logo.png"></div>
+	<div class="name"><a href="table.html" th:href="@{/table}">Электронная система подачи заявок на оказание ремонтных услуг <br> в СОЛ "Ждановец"</a></div>
+</div>
+<div class="container">
+	<h1>Форма электронной заявки</h1>
+	<div class="form-container form__wrapper">
+
+		<!-- Форма обратной связи -->
+		<form id="form-2" action="#" th:action="@{/saveForm}" th:object="${applicationForm}" method="post">
+			<div class="form-row">
+				<!-- Дата отправки заявки -->
+				<div class="form-group">
+					<label for="form-1-name" class="control-label">Дата</label>
+					<input id="form-1-name" type="text" name="name" class="form-control" value="" placeholder="..." minlength="2"
+						   maxlength="30" required="required" th:field="*{dateOfPost}">
+					<div class="invalid-feedback"></div>
+				</div>
+				<!-- Наименование работы -->
+				<div class="form-group">
+					<label for="form-2-name" class="control-label">Наименование работы</label>
+					<input id="form-2-name" type="text" name="name" class="form-control" value="" placeholder="..." minlength="2"
+						   maxlength="30" required="required" th:field="*{sortOfWork}">
+					<div class="invalid-feedback"></div>
+				</div>
+				<!-- Номер домика -->
+				<div class="form-group">
+					<label for="form-2-number" class="control-label">Номер домика</label>
+					<input id="form-2-number" type="text" name="name" class="form-control" value="" placeholder="..." minlength="2"
+						   maxlength="30" required="required" th:field="*{houseNumber}">
+					<div class="invalid-feedback"></div>
+				</div>
+			<!-- Сообщение пользователя -->
+			<div class="form-group">
+				<label for="form-2-message" class="control-label">Сообщение</label>
+				<textarea id="form-2-message" name="message" class="form-control" rows="3"
+						  placeholder="Сообщение" minlength="0" maxlength="500"
+						  required="required" th:field="*{message}"></textarea>
+				<div class="invalid-feedback"></div>
+			</div>
+
+			<!-- Файлы, для прикрепления к форме -->
+			<div class="form-group form-attach" data-count="5">
+				<div class="form-attach__label">Файлы (не более <span class="form-attach__count">5</span>)</div>
+				<div class="form-attach__wrapper">
+					<fieldset> <legend></legend>
+						<p><input type="file" multiple="multiple"></p>
+					</fieldset>
+					<div class="form-attach__items"></div>
+				</div>
+				<div class="invalid-feedback"></div>
+			</div>
+
+			<!-- Кнопка для отправки формы на сервер -->
+			<div class="form-submit">
+				<button type="submit">Отправить заявку</button>
+				<h3>В экстренном случае звоните по телефону: <span><a href=”tel:+7**********”>+7 (***) ***-**-**</a> </span></h3>
+			</div>
+			</div>
+		</form>
+	</div>
+</div>
+</body>
+</html>
